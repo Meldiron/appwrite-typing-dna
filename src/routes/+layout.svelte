@@ -5,12 +5,12 @@
 	import LoginImageDark from '$lib/images/login-dark-mode.png';
 </script>
 
-<svelte:head><title>Server side rendering with Appwrite</title></svelte:head>
+<svelte:head><title>Appwrite Auth | Typing DNA</title></svelte:head>
 
 <main class="grid-1-1 is-full-page" id="main">
 	<section class="u-flex u-flex-vertical" style:--url={`url(${LoginImageDark})`}>
 		<div class="tag-line is-not-mobile">
-			<p>Server side rendering<span class="underscore">_</span></p>
+			<p>Appwrite Auth with Typing DNA<span class="underscore">_</span></p>
 		</div>
 		<div class="u-flex u-stretch" />
 		<div class="logo u-flex u-gap-16">

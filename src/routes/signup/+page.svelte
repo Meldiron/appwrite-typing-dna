@@ -1,9 +1,5 @@
-<script>
-	import { signInWithGithub } from '$lib/oauth';
-</script>
-
 <div class="u-max-width-500 u-width-full-line">
-	<h1 class="heading-level-2 u-margin-block-start-auto">Demo sign up</h1>
+	<h1 class="heading-level-2 u-margin-block-start-auto">Sign up</h1>
 	<div class="u-margin-block-start-24">
 		<form class="form common-section" method="POST">
 			<ul class="form-list" style="--form-list-gap: 1.5rem;">
@@ -63,7 +59,7 @@
 				</li>
 				<span class="with-separators eyebrow-heading-3">or</span>
 				<li class="form-item">
-					<button class="button is-github is-full-width" type="button" on:click={signInWithGithub}>
+					<button class="button is-github is-full-width" type="button">
 						<span class="icon-github" aria-hidden="true" />
 						<span class="text">Sign up with GitHub</span></button
 					>

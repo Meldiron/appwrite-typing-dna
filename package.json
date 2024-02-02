@@ -26,6 +26,6 @@
 	"dependencies": {
 		"@appwrite.io/pink": "^0.2.0",
 		"@appwrite.io/pink-icons": "^0.2.0",
-		"luke-node-appwrite-ssr": "^0.0.8"
+		"appwrite": "npm:@appwrite.io/console@0.6.0-rc.8"
 	}
 }

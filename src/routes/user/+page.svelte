@@ -1,13 +1,35 @@
 <script lang="ts">
+    import { deleteSession } from '$lib/appwrite';
+    import { goto } from "$app/navigation";
+
 	export let data;
 
-	const { user } = data;
+	const { account } = data;
 
 	function getInitials(name: string) {
 		const [first, last] = name.split(' ');
 		if (last) return `${first[0]}${last[0]}`;
 		return `${first[0]}`;
 	}
+
+    let loading = false;
+
+    async function signOut() {
+		if(loading) {
+			return;
+		}
+
+		loading = true;
+
+		try {
+			await deleteSession();
+			goto('/');
+		} catch(err) {
+			alert(err.message ? err.message : err.toString());
+		} finally {
+			loading = false;
+		}
+    }
 </script>
 
 <div class="u-max-width-500 u-width-full-line">
@@ -15,11 +37,11 @@
 	<div class="u-margin-block-start-24">
 		<section class="card">
 			<div class="user-profile">
-				<span class="avatar">{getInitials(user.name)}</span>
+				<span class="avatar">{getInitials(account.email)}</span>
 				<span class="user-profile-info">
-					<span class="name">{user.email}</span>
+					<span class="name">{account.email}</span>
 					<div class="interactive-text-output u-padding-inline-0">
-						<span class="text">{user.$id}</span>
+						<span class="text">{account.$id}</span>
 						<div class="u-flex u-cross-child-start u-gap-8">
 							<button class="interactive-text-output-button" aria-label="copy text">
 								<span class="icon-duplicate" aria-hidden="true" />
@@ -27,15 +49,12 @@
 						</div>
 					</div>
 				</span>
-				<span class="user-profile-sep" />
-				<span class="user-profile-empty-column" />
-				<span class="user-profile-info"><span class="text">Welcome back, {user.name}!</span></span>
 			</div>
 		</section>
 		<form class="form common-section" method="POST">
 			<ul class="form-list" style="--form-list-gap: 1.5rem;">
 				<li class="form-item">
-					<button class="button is-secondary is-full-width" type="submit">Sign out</button>
+					<button disabled={loading} on:click={signOut} class="button is-secondary is-full-width" type="submit">Sign out</button>
 				</li>
 			</ul>
 		</form>
